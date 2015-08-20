@@ -1,4 +1,4 @@
-package com.example.bsd_16.studentlist1;
+package com.example.bsd_16.studentlist3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
