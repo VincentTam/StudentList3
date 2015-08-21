@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected SQLiteDatabase db;
     protected Cursor cursor;
     protected ListAdapter adapter;
-    protected ListView employeeList;
+    protected ListView studentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         db = (new DatabaseHelper(this)).getWritableDatabase();
         searchText = (EditText) findViewById (R.id.searchText);
-        employeeList = (ListView) findViewById (R.id.list);
+        studentList = (ListView) findViewById (R.id.list);
 
         Button button = (Button) findViewById(R.id.searchButton);  // The back button to MainActivity.java
         button.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void search(View view) {
         // || is the concatenation operation in SQLite
-        cursor = db.rawQuery("SELECT _id, firstName, lastName, title FROM employee WHERE firstName || ' ' || lastName LIKE ?",
+        cursor = db.rawQuery("SELECT _id, firstName, lastName, title FROM student WHERE firstName || ' ' || lastName LIKE ?",
                 new String[]{"%" + searchText.getText().toString() + "%"});
         adapter = new SimpleCursorAdapter(
                 this,
-                R.layout.employee_list_item,
+                R.layout.student_list_item,
                 cursor,
                 new String[]{"firstName", "lastName", "title"},
                 new int[]{R.id.firstName, R.id.lastName, R.id.title},
                 0);
-        employeeList.setAdapter(adapter);
+        studentList.setAdapter(adapter);
     }
 }
