@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.employee_list_item,
                 cursor,
                 new String[]{"firstName", "lastName", "title"},
-                new int[]{R.id.firstName, R.id.lastName, R.id.title});
+                new int[]{R.id.firstName, R.id.lastName, R.id.title},
+                0);
         employeeList.setAdapter(adapter);
     }
 }
